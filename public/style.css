@@ -109,19 +109,40 @@ form div {
 #footer {
   display: absolute;
   z-index: 4;
-  background-color: #var(--white);
+  background-color: #f5f5f5;
   position: fixed;
   height: 75px;
   bottom: 0;
   left: 0;
   width: 100vw;
+  display: flex;
+}
+
+.footerLinks {
+  flex: auto;
+  width: 50vw;
+  height: 100%
+  margin-right: 0;
+  flex: auto;
 }
 
 .footer-link-img {
+  position: absolute;
   width: 30px;
   height: 30px;
-  margin: 10px;
+  margin-top: 10px;
+  margin-left:96%;
+  border-radius: 50%;
   transition: box-shadow 0.2s;
+}
+
+#tinytext {
+  position:absolute;
+  margin-top: 18px;
+  margin-left: 88%;
+  width 30px;
+  text-align: right;
+  
 }
 
 /*------------------------- KEYFRAMES------------------ */
@@ -166,6 +187,12 @@ form div {
 @keyframes blink {
   to {
     background: var(--black);
+  }
+}
+
+@keyframes typewriter0 {
+  to {
+    left: ;
   }
 }
 
@@ -312,4 +339,13 @@ h1::after {
   width: 0.125em;
   background: transparent;
   animation: typewriter 3s steps(44) 1s forwards, blink 700ms steps(44) 9;
+}
+h4::before,
+h4::after{
+  content: "";
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
 }
