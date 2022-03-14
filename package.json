@@ -1,5 +1,5 @@
 {
-  "name": "stackathon",
+  "name": "heycouldyoutextmeifitsgonnarain",
   "version": "2.0.0",
   "description": "An awesome website thats gonna make sure you never get stuck in the rain again.",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "test:dev:models": "npm run test:dev -- --grep=model",
     "test:dev:routes": "npm run test:dev -- --grep=route"
   },
-  "author": "Fullstack Academy of Code",
+  "author": "Dale Luce",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
@@ -28,7 +28,8 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "timepicker-ui": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

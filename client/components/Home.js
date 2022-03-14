@@ -1,12 +1,25 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authenticate } from "../store";
 import Clouds from "./Clouds";
 
-/**
- * COMPONENT
- */
-export const Home = (props) => {
-  const { username } = props;
+const Home = () => {
+  const [newUser, setNewUser] = useState({
+    firstName: "",
+    phoneNumber: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(authenticate(newUser, "signup"));
+  };
 
   return (
     <section>
@@ -14,44 +27,58 @@ export const Home = (props) => {
       <div id="mainContainer">
         <div className="mainContent">
           <div id="mainText">
-            <h4 id="1" className="left">
-              What...like...everytime it's gonna rain?
+            <h4 id="introOne" className="left">
+              What...like...everytime it rains?
             </h4>
-            <h4 className="right">
-              Yeah. And also like...when i'm getting ready for work in the
+            <h4 id="introTwo" className="right">
+              Yeah. And also maybe...when i'm getting ready for work in the
               morning?
             </h4>
-            <h4 className="left">
+            <h4 id="introThree" className="left">
               Can't you just check on a weather app or something?
             </h4>
-            <h4 className="right">Yea but...sometimes I forget.</h4>
-            <h4 id="left">
-              This seems a little ridiculous, but I guess so....
+            <h4 id="introFour" className="right">
+              Yea but...sometimes I forget.
             </h4>
           </div>
-          <form>
-            <label htmlFor="name">Name</label>
-            <input size="50" type="text" id="name" name="name"></input>
-            <label htmlFor="number">Phone Number</label>
-            <input size="50" type="text" id="number" name="number"></input>
-            <br></br>
-            <button type="submit" value="submit">
-              Submit
-            </button>
-          </form>
         </div>
+        <form onSubmit={handleSubmit} id="introForm">
+          <label htmlFor="FirstName">First Name</label>
+          <input
+            size="50"
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={newUser.firstName}
+            onChange={handleChange}
+          ></input>
+
+          <label htmlFor="phoneNumber">Phone Number</label>
+          <input
+            size="50"
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            onChange={handleChange}
+            value={newUser.phoneNumber}
+          ></input>
+          <label htmlFor="password">Password</label>
+          <input
+            size="50"
+            type="text"
+            id="password"
+            name="password"
+            value={newUser.password}
+            onChange={handleChange}
+          ></input>
+          <br></br>
+          <button type="submit" value="submit">
+            Count Me In
+          </button>
+        </form>
       </div>
     </section>
   );
 };
 
-/**
- * CONTAINER
- */
-const mapState = (state) => {
-  return {
-    username: state.auth.username,
-  };
-};
-
-export default connect(mapState)(Home);
+export default Home;

@@ -1,13 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
+import { Login } from "./components/Login";
+import { CountMeIn } from "./components/CountMeIn";
 import Home from "./components/Home";
 import { me } from "./store";
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
@@ -20,14 +18,15 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route path="/countmein" component={CountMeIn} />
+            <Redirect to="/" />
+            <Route path="/login" exact component={Login} />
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/countmein" exact component={CountMeIn} />
           </Switch>
         )}
       </div>
@@ -35,14 +34,11 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id,
+    isLoggedIn: !!state.user.phoneNumber,
   };
 };
 

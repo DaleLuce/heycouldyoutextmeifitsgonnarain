@@ -13,12 +13,12 @@ body {
     circle at 98% 1%,
     var(--orange2) 0%,
     var(--yellow) 16%,
-    var(--blue2) 18%,
+    var(--blue1) 18%,
     var(--blue1) 85%
   );
   background-position-x: 80%;
   color: #333;
-  font: 100% Tahoma, Sans Serif;
+  font-family: "Red Hat Mono", monospace;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -52,8 +52,8 @@ nav a {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-  margin-top: 0px;
-  font-size: 45pt;
+  margin-top: 4px;
+  font-size: 36pt;
 }
 
 .navLinks {
@@ -66,7 +66,7 @@ nav a {
 }
 
 #background-wrap {
-  bottom: 0;
+  bottom: 70%;
   left: 0;
   padding-top: 50px;
   position: fixed;
@@ -75,35 +75,52 @@ nav a {
   z-index: -1;
 }
 #mainContainer {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 22vh;
+  position: relative;
+  margin: auto;
+  margin-top: 23vh;
   padding: 45px;
   width: 60vw;
   height: 50vh;
   box-shadow: 0px 0px 25px 2px var(--black);
   backdrop-filter: blur(15px);
-  display: flex;
 }
+
+/* .mainContent {
+  width: 85%;
+  margin: auto;
+
+} */
 
 .mainContent {
-  width: 80%;
-  flex: auto;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  box-sizing: border-box;
 }
 
-.mainContentHalf {
+/* .mainContentHalf {
   display: inline-block;
   width: 38%;
   height: 80%;
   padding: 5%;
   flex: auto;
+} */
+
+#loginForm {
+  width: max-content;
+  margin: auto;
+  text-align: center;
 }
 
 #mainText {
+  display: table-cell;
+  vertical-align: middle;
+  height: auto;
 }
 
 h4 {
-  padding: 5px;
+  padding: 3px;
 }
 
 .left {
@@ -115,23 +132,38 @@ h4 {
   width: max-content;
 }
 
-form {
+#introForm {
   width: max-content;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3%;
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 2s ease 17s forwards;
+}
+h2 {
+  margin: auto;
+  width: max-content;
+  padding: 20px;
 }
 
 input {
   margin: 7px;
   padding: 7px;
+  background-color: var(--white);
+  text-align: center;
 }
 
+#timePicker {
+  width: 20vw;
+}
+#timePickerDiv {
+  width: max-content;
+  margin: auto;
+}
 label {
   display: block;
   text-align: center;
-  font-size: 18pt;
+  font-size: 14pt;
   font: Tahoma, Sans Serif;
   font-weight: 900;
 }
@@ -139,7 +171,17 @@ label {
 button {
   width: 100px;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
+  border-radius: 14px;
+  box-shadow: 0px 0px 25px 2px var(--black);
+}
+button:hover {
+  border-color: var(--orange2);
+}
+
+#location {
+  width: max-content;
+  margin: auto;
 }
 
 #footer {
@@ -175,31 +217,13 @@ button {
 #tinytext {
   position: absolute;
   margin-top: 18px;
-  margin-left: 88%;
+  margin-left: 85%;
   text-align: right;
 }
 
 /*------------------------- KEYFRAMES------------------ */
 
 /* clouds */
-
-@-webkit-keyframes animateCloud {
-  0% {
-    margin-left: -1000px;
-  }
-  100% {
-    margin-left: 100%;
-  }
-}
-
-@-moz-keyframes animateCloud {
-  0% {
-    margin-left: -1000px;
-  }
-  100% {
-    margin-left: 100%;
-  }
-}
 
 @keyframes animateCloud {
   0% {
@@ -212,11 +236,11 @@ button {
 
 /* typewriter */
 
-@keyframes typewriter {
+/* @keyframes typewriter {
   to {
     left: 100%;
   }
-}
+} */
 
 @keyframes blink {
   to {
@@ -224,9 +248,76 @@ button {
   }
 }
 
-@keyframes typewriter0 {
+@keyframes typewriter {
+  3%,
+  60% {
+    left: 13.98%;
+  }
   to {
-    left: ;
+    left: 100%;
+  }
+}
+
+@keyframes introOne {
+  10%,
+  45% {
+    left: 22%;
+  }
+  50%,
+  65% {
+    left: 42%;
+  }
+  /* 75% {
+    left: 27.%;
+  }
+  75% {
+    left: 27.5%;
+  } */
+  to {
+    left: 100%;
+  }
+}
+@keyframes introTwo {
+  3%,
+  45% {
+    left: 8.8%;
+  }
+
+  50%,
+  75% {
+    left: 32%;
+  }
+  /* 30% {
+    left: 37.4%;
+  }
+
+  50% {
+    left: 41.16%;
+  }  */
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes introThree {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes introFour {
+  5%,
+  60% {
+    left: 34%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 
@@ -235,52 +326,27 @@ button {
 /* clouds */
 
 .x1 {
-  -webkit-animation: animateCloud 35s linear infinite;
-  -moz-animation: animateCloud 35s linear infinite;
-  animation: animateCloud 35s linear infinite;
-
-  -webkit-transform: scale(0.65);
-  -moz-transform: scale(0.65);
+  animation: animateCloud 65s linear infinite;
   transform: scale(0.65);
 }
 
 .x2 {
-  -webkit-animation: animateCloud 20s linear infinite;
-  -moz-animation: animateCloud 20s linear infinite;
   animation: animateCloud 20s linear infinite;
-
-  -webkit-transform: scale(0.3);
-  -moz-transform: scale(0.3);
   transform: scale(0.3);
 }
 
 .x3 {
-  -webkit-animation: animateCloud 30s linear infinite;
-  -moz-animation: animateCloud 30s linear infinite;
   animation: animateCloud 30s linear infinite;
-
-  -webkit-transform: scale(0.5);
-  -moz-transform: scale(0.5);
   transform: scale(0.5);
 }
 
 .x4 {
-  -webkit-animation: animateCloud 18s linear infinite;
-  -moz-animation: animateCloud 18s linear infinite;
   animation: animateCloud 18s linear infinite;
-
-  -webkit-transform: scale(0.4);
-  -moz-transform: scale(0.4);
   transform: scale(0.4);
 }
 
 .x5 {
-  -webkit-animation: animateCloud 25s linear infinite;
-  -moz-animation: animateCloud 25s linear infinite;
   animation: animateCloud 25s linear infinite;
-
-  -webkit-transform: scale(0.55);
-  -moz-transform: scale(0.55);
   transform: scale(0.55);
 }
 
@@ -292,28 +358,7 @@ button {
 
 .cloud {
   background: var(--white);
-  background: -moz-linear-gradient(top, #fff 5%, #f1f1f1 100%);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(5%, #fff),
-    color-stop(100%, #f1f1f1)
-  );
-  background: -webkit-linear-gradient(top, #fff 5%, #f1f1f1 100%);
-  background: -o-linear-gradient(top, #fff 5%, #f1f1f1 100%);
-  background: -ms-linear-gradient(top, #fff 5%, #f1f1f1 100%);
-  background: linear-gradient(top, #fff 5%, #f1f1f1 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f1f1f1',GradientType=0 );
-
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
   border-radius: 100px;
-
-  -webkit-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-
   height: 120px;
   position: relative;
   width: 350px;
@@ -321,17 +366,14 @@ button {
 
 .cloud:after,
 .cloud:before {
-  background: #fff;
+  background: var(--white);
   content: "";
   position: absolute;
   z-index: -1;
 }
 
 .cloud:after {
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
   border-radius: 100px;
-
   height: 100px;
   left: 50px;
   top: -50px;
@@ -339,10 +381,7 @@ button {
 }
 
 .cloud:before {
-  -webkit-border-radius: 200px;
-  -moz-border-radius: 200px;
   border-radius: 200px;
-
   width: 180px;
   height: 180px;
   right: 50px;
@@ -366,16 +405,21 @@ h1::after {
 
 h1::before {
   background: var(--white);
-  animation: typewriter 3s steps(44) 1s forwards;
+  animation: typewriter 2s steps(43) 2s forwards;
 }
 
 h1::after {
   width: 0.125em;
   background: transparent;
-  animation: typewriter 3s steps(44) 1s forwards, blink 700ms steps(44) 9;
+  animation: typewriter 2s steps(43) 2s forwards, blink 700ms steps(43) 7;
 }
-h4::before,
-h4::after {
+
+#introOne {
+  position: relative;
+}
+
+#introOne::before,
+#introOne::after {
   content: "";
   position: absolute;
   top: 0;
@@ -384,7 +428,86 @@ h4::after {
   left: 0;
 }
 
-h4::before {
-  /* background: red; */
-  animation: typewriter 3s steps;
+#introOne::before {
+  background-color: var(--blue1);
+  animation: introOne 2s steps(32) 6s forwards;
+}
+
+#introOne::after {
+  width: 0.125em;
+  background: transparent;
+  animation: introOne 2s steps(32) 6s forwards, blink 700ms steps(32) 5s 5;
+}
+
+#introTwo {
+  position: relative;
+}
+#introTwo::before,
+#introTwo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#introTwo::before {
+  background-color: var(--blue1);
+  animation: introTwo 2s steps(41) 9s forwards;
+}
+
+#introTwo::after {
+  width: 0.125em;
+  background: transparent;
+  animation: introTwo 2s steps(41) 9s forwards, blink 700ms steps(41) 9s 5;
+}
+
+#introThree {
+  position: relative;
+}
+#introThree::before,
+#introThree::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#introThree::before {
+  background-color: var(--blue1);
+  animation: introThree 1s steps(51) 12s forwards;
+}
+
+#introThree::after {
+  width: 0.125em;
+  background: transparent;
+  animation: introThree 1s steps(51) 12s 15s, blink 700ms steps(51) 12s 4;
+}
+
+#introFour {
+  position: relative;
+  margin-right: 185px;
+}
+#introFour::before,
+#introFour::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#introFour::before {
+  background-color: var(--blue1);
+  animation: introFour 2s steps(29) 14s forwards;
+}
+
+#introFour::after {
+  width: 0.125em;
+  background: transparent;
+  animation: introFour 2s steps(29) 14s forwards, blink 700ms steps(29) 13s 6;
 }
